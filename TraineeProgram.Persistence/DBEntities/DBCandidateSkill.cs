@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace TraineeProgram.Persistence.DBEntities
 {
-    public partial class DBCandidateLink
+    public partial class DBCandidateSkill
     {
-        public int CandidateLinkId { get; set; }
-        public string Link { get; set; } = null!;
+        public int CandidateSkillId { get; set; }
+        public int SkillId { get; set; }
         public int CandidateId { get; set; }
-        public string LinkType { get; set; } = null!;
 
         public virtual DBCandidate Candidate { get; set; } = null!;
+        public virtual DBSkill Skill { get; set; } = null!;
     }
 }

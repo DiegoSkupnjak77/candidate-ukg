@@ -13,47 +13,47 @@ namespace TraineeProgram.Persistence.MappersPersistence
     {
         public InterviewMapperPersistence()
         {
-            CreateMap<DBInterview, Hr>()
-               .ForMember(dest => dest.IdInterview, opt => opt.MapFrom(src => src.Id))
-               .ForMember(dest => dest.SalaryExpected, opt => opt.MapFrom(src => src.Hr.SalaryExpected));
-            CreateMap<DBHr, Hr>();
+            //CreateMap<DBInterview, Hr>()
+            //   .ForMember(dest => dest.IdInterview, opt => opt.MapFrom(src => src.Id))
+            //   .ForMember(dest => dest.SalaryExpected, opt => opt.MapFrom(src => src.Hr.SalaryExpected));
+            //CreateMap<DBHr, Hr>();
 
-            CreateMap<DBInterview, Cultural>()
-               .ForMember(dest => dest.IdInterview, opt => opt.MapFrom(src => src.Id));
-            CreateMap<DBCultural, Cultural>();
+            //CreateMap<DBInterview, Cultural>()
+            //   .ForMember(dest => dest.IdInterview, opt => opt.MapFrom(src => src.Id));
+            //CreateMap<DBCultural, Cultural>();
 
-            CreateMap<DBInterview, Technical>()
-             .ForMember(dest => dest.IdInterview, opt => opt.MapFrom(src => src.Id))
-             .ForMember(dest => dest.CandidateLevel, opt => opt.MapFrom(src => src.Technical.CandidateLevel));
-            CreateMap<DBTechnical, Technical>();
+            //CreateMap<DBInterview, Technical>()
+            // .ForMember(dest => dest.IdInterview, opt => opt.MapFrom(src => src.Id))
+            // .ForMember(dest => dest.CandidateLevel, opt => opt.MapFrom(src => src.Technical.CandidateLevel));
+            //CreateMap<DBTechnical, Technical>();
 
-            CreateMap<DBInterview, Manager>()
-                 .ForMember(dest => dest.IdInterview, opt => opt.MapFrom(src => src.Id));
-            CreateMap<DBManager, Manager>();
+            //CreateMap<DBInterview, Manager>()
+            //     .ForMember(dest => dest.IdInterview, opt => opt.MapFrom(src => src.Id));
+            //CreateMap<DBManager, Manager>();
 
-            CreateMap<DBInterview, Vp>()
-                .ForMember(dest => dest.IdInterview, opt => opt.MapFrom(src => src.Id));
-            CreateMap<DBVp, Vp>();
+            //CreateMap<DBInterview, Vp>()
+            //    .ForMember(dest => dest.IdInterview, opt => opt.MapFrom(src => src.Id));
+            //CreateMap<DBVp, Vp>();
         }
     }
     public class InvertedInterviewMapper : Profile
     {
         public InvertedInterviewMapper()
         {
-            CreateMap<Hr, DBInterview>();
-            CreateMap<Hr, DBHr>();
+            //CreateMap<Hr, DBInterview>();
+            //CreateMap<Hr, DBHr>();
 
-            CreateMap<Cultural, DBInterview>();
-            CreateMap<Cultural, DBCultural>();
+            //CreateMap<Cultural, DBInterview>();
+            //CreateMap<Cultural, DBCultural>();
 
-            CreateMap<Technical, DBInterview>();
-            CreateMap<Technical, DBTechnical>();
+            //CreateMap<Technical, DBInterview>();
+            //CreateMap<Technical, DBTechnical>();
 
-            CreateMap<Manager, DBInterview>();
-            CreateMap<Manager, DBManager>();
+            //CreateMap<Manager, DBInterview>();
+            //CreateMap<Manager, DBManager>();
 
-            CreateMap<Vp, DBInterview>();
-            CreateMap<Vp, DBVp>();
+            //CreateMap<Vp, DBInterview>();
+            //CreateMap<Vp, DBVp>();
         }
     }
 }

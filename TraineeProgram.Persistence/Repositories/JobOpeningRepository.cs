@@ -25,7 +25,7 @@ namespace TraineeProgram.Persistence.Repositories
 
         public async Task<JobOpening> GetByIdAsync(int id)
         {
-            var jobOpening = await _context.JobOpenings.FirstOrDefaultAsync(c => c.Id == id);
+            var jobOpening = await _context.JobOpenings.FirstOrDefaultAsync(c => c.JobOpeningId == id);
             return _mapper.Map<JobOpening>(jobOpening);
         }
 
@@ -33,7 +33,7 @@ namespace TraineeProgram.Persistence.Repositories
         {
             var jobOpeningToInsert = await _context.JobOpenings.AddAsync(_mapper.Map<DBJobOpening>(jobOpening));
             await _context.SaveChangesAsync();
-            var jobOpeningSaved = await _context.JobOpenings.FirstOrDefaultAsync(c => c.Id == jobOpeningToInsert.Entity.Id);
+            var jobOpeningSaved = await _context.JobOpenings.FirstOrDefaultAsync(c => c.JobOpeningId == jobOpeningToInsert.Entity.JobOpeningId);
             return _mapper.Map<JobOpening>(jobOpeningSaved);
         }
     }

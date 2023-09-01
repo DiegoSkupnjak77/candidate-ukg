@@ -14,22 +14,22 @@ namespace TraineeProgram.Domain.Services
             _offerLetterRepository = offerLetterRepository;
         }
 
-        public async Task<IEnumerable<OfferLetter>> GetAllAsync()
-        {
-            return await _offerLetterRepository.GetAllAsync();
-        }
+        //public async Task<IEnumerable<OfferLetter>> GetAllAsync()
+        //{
+        //    return await _offerLetterRepository.GetAllAsync();
+        //}
 
-        public async Task<OfferLetter> GetByIdAsync(int id)
-        {
-            return await _offerLetterRepository.GetByIdAsync(id);
-        }
-        public async Task<OfferLetter> CreateAsync(OfferLetter offerLetter)
-        {
-            if (ValidationDataService(offerLetter))
-                return await _offerLetterRepository.CreateAsync(offerLetter);
-            else
-                throw new FieldRequiredException("There are empty fields");
-        }
+        //public async Task<OfferLetter> GetByIdAsync(int id)
+        //{
+        //    return await _offerLetterRepository.GetByIdAsync(id);
+        //}
+        //public async Task<OfferLetter> CreateAsync(OfferLetter offerLetter)
+        //{
+        //    if (ValidationDataService(offerLetter))
+        //        return await _offerLetterRepository.CreateAsync(offerLetter);
+        //    else
+        //        throw new FieldRequiredException("There are empty fields");
+        //}
 
         private bool ValidationDataService(OfferLetter offerLetter)
         {

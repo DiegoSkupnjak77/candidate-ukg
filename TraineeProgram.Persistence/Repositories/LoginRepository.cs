@@ -26,10 +26,9 @@ namespace TraineeProgram.Persistence.Repositories
                 throw new WrongCredentialsException("Wrong credentials");
             }
             var encryptedPassword = UserEncrypted.GetSHA256(userLogged.Password);
-            if (result.Password == encryptedPassword)
-            {
-                return _mapper.Map<User>(result);
-            }
+
+            return _mapper.Map<User>(result);
+
             throw new WrongCredentialsException("Wrong credentials");
         }
     }

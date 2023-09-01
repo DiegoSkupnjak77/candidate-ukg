@@ -61,21 +61,24 @@
     <Folder Include="Snapshots" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\VP.sql" />
-    <Build Include="dbo\Tables\UserR_InterviewType.sql" />
     <Build Include="dbo\Tables\UserR.sql" />
-    <Build Include="dbo\Tables\TestTable.sql" />
-    <Build Include="dbo\Tables\Technical.sql" />
-    <Build Include="dbo\Tables\OfferLetter.sql" />
-    <Build Include="dbo\Tables\Manager.sql" />
     <Build Include="dbo\Tables\JobOpening.sql" />
     <Build Include="dbo\Tables\InterviewType.sql" />
     <Build Include="dbo\Tables\Interview.sql" />
-    <Build Include="dbo\Tables\HR.sql" />
-    <Build Include="dbo\Tables\Cultural.sql" />
-    <Build Include="dbo\Tables\Candidate_Links.sql" />
-    <Build Include="dbo\Tables\Candidate_JobOpening.sql" />
     <Build Include="dbo\Tables\Candidate.sql" />
+    <Build Include="dbo\Tables\UserSkill.sql" />
+    <Build Include="dbo\Tables\UserInterviewType.sql" />
+    <Build Include="dbo\Tables\TeamSkill.sql" />
+    <Build Include="dbo\Tables\Team.sql" />
+    <Build Include="dbo\Tables\Skill.sql" />
+    <Build Include="dbo\Tables\Seniority.sql" />
+    <Build Include="dbo\Tables\Reference.sql" />
+    <Build Include="dbo\Tables\Process.sql" />
+    <Build Include="dbo\Tables\JobRole.sql" />
+    <Build Include="dbo\Tables\InterviewUser.sql" />
+    <Build Include="dbo\Tables\CandidateSkill.sql" />
+    <Build Include="dbo\Tables\CandidateLink.sql" />
+    <Build Include="dbo\Tables\CandidateJobOpening.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Snapshots\TraineeProgram.DB_20230728_11-36-23.dacpac" />

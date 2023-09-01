@@ -24,11 +24,6 @@ namespace TraineeProgram.Persistence.Repositories
             List<Interview> interviews = new List<Interview>();
 
             var interviewsFromDB = await _context.Interviews
-                .Include(i => i.Hr)
-                .Include(i => i.Cultural)
-                .Include(i => i.Technical)
-                .Include(i => i.Manager)
-                .Include(i => i.Vp)
                 .ToListAsync();
 
             foreach (var i in interviewsFromDB)
@@ -49,7 +44,7 @@ namespace TraineeProgram.Persistence.Repositories
                 var map = _mapper.Map<DBInterview>(interview);
                 var interviewSaved = await _context.Interviews.AddAsync(map);
                 await _context.SaveChangesAsync();
-                var specificInterviewSaved = CreateASpecificInterview(interview, interviewSaved.Entity.Id);
+                var specificInterviewSaved = CreateASpecificInterview(interview, interviewSaved.Entity.InterviewId);
                 return interview;
             }
             catch (Exception ex)
@@ -61,13 +56,8 @@ namespace TraineeProgram.Persistence.Repositories
         }
         public async Task<Interview> GetLastInterviewByCandidateIdAsync(int id)
         {
-                var interviewFromDB = await _context.Interviews.OrderBy(i => i.Id)
-                    .Include(i => i.Hr)
-                    .Include(i => i.Cultural)
-                    .Include(i => i.Technical)
-                    .Include(i => i.Manager)
-                    .Include(i => i.Vp)
-                .LastOrDefaultAsync(i => i.IdCandidate == id);
+                var interviewFromDB = await _context.Interviews.OrderBy(i => i.InterviewId)
+                .LastOrDefaultAsync();
                 var interviewType = MapDBInterviewToInterviewType.MapToInterviewType(interviewFromDB, _mapper);
                 return interviewType;
         }
@@ -76,37 +66,37 @@ namespace TraineeProgram.Persistence.Repositories
 
             switch (interview)
             {
-                case Hr:
-                    Hr? hr = interview as Hr;
-                    hr.IdInterview= lastInterviewId;
-                    await _context.AddAsync(_mapper.Map<DBHr>(hr));
-                    await _context.SaveChangesAsync();
-                    return interview;
+                //case Hr:
+                //    Hr? hr = interview as Hr;
+                //    hr.IdInterview= lastInterviewId;
+                //    await _context.AddAsync(_mapper.Map<DBHr>(hr));
+                //    await _context.SaveChangesAsync();
+                //    return interview;
 
-                case Cultural:
-                    Cultural? cultural = interview as Cultural;
-                    cultural.IdInterview= lastInterviewId;
-                    await _context.AddAsync(_mapper.Map<DBCultural>(cultural));
-                    await _context.SaveChangesAsync();
-                    return interview;
-                case Technical:
-                    Technical? technical = interview as Technical;
-                    technical.IdInterview= lastInterviewId;
-                    await _context.AddAsync(_mapper.Map<DBTechnical>(technical));
-                    await _context.SaveChangesAsync();
-                    return interview;
-                case Manager:
-                    Manager? manager = interview as Manager;
-                    manager.IdInterview= lastInterviewId;
-                    await _context.AddAsync(_mapper.Map<DBManager>(manager));
-                    await _context.SaveChangesAsync();
-                    return interview;
-                case Vp:
-                    Vp? vp = interview as Vp;
-                    vp.IdInterview= lastInterviewId;
-                    await _context.AddAsync(_mapper.Map<DBVp>(vp));
-                    await _context.SaveChangesAsync();
-                    return interview;
+                //case Cultural:
+                //    Cultural? cultural = interview as Cultural;
+                //    cultural.IdInterview= lastInterviewId;
+                //    await _context.AddAsync(_mapper.Map<DBCultural>(cultural));
+                //    await _context.SaveChangesAsync();
+                //    return interview;
+                //case Technical:
+                //    Technical? technical = interview as Technical;
+                //    technical.IdInterview= lastInterviewId;
+                //    await _context.AddAsync(_mapper.Map<DBTechnical>(technical));
+                //    await _context.SaveChangesAsync();
+                //    return interview;
+                //case Manager:
+                //    Manager? manager = interview as Manager;
+                //    manager.IdInterview= lastInterviewId;
+                //    await _context.AddAsync(_mapper.Map<DBManager>(manager));
+                //    await _context.SaveChangesAsync();
+                //    return interview;
+                //case Vp:
+                //    Vp? vp = interview as Vp;
+                //    vp.IdInterview= lastInterviewId;
+                //    await _context.AddAsync(_mapper.Map<DBVp>(vp));
+                //    await _context.SaveChangesAsync();
+                //    return interview;
                 default:
                     return null;
 

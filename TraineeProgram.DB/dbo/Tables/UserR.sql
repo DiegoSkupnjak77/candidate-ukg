@@ -1,15 +1,21 @@
 ﻿CREATE TABLE [dbo].[UserR] (
-    [id]        INT             IDENTITY (1, 1) NOT NULL,
-    [firstName] VARCHAR (30)    NOT NULL,
-    [lastName]  VARCHAR (30)    NOT NULL,
-    [email]     VARCHAR (60)    NOT NULL,
-    [isActive]  BIT             NOT NULL,
-    [userRole]  INT             NOT NULL,
-    [Password]  NVARCHAR (200)  NOT NULL,
-    [Photo]     VARBINARY (MAX) NULL,
-    PRIMARY KEY CLUSTERED ([id] ASC),
-    CONSTRAINT [ctr_uniqueEmail] UNIQUE NONCLUSTERED ([email] ASC)
+    [UserId]      INT             IDENTITY (1, 1) NOT NULL,
+    [FirstName]   VARCHAR (30)    NOT NULL,
+    [LastName]    VARCHAR (30)    NOT NULL,
+    [Email]       VARCHAR (60)    NOT NULL,
+    [IsActive]    BIT             NOT NULL,
+    [JobRoleId]   INT             NOT NULL,
+    [SeniorityId] INT             NOT NULL,
+    [Photo]       VARBINARY (MAX) NULL,
+    [TeamId]      INT             NOT NULL,
+    PRIMARY KEY CLUSTERED ([UserId] ASC),
+    FOREIGN KEY ([JobRoleId]) REFERENCES [dbo].[JobRole] ([JobRoleId]),
+    FOREIGN KEY ([SeniorityId]) REFERENCES [dbo].[Seniority] ([SeniorityId]),
+    FOREIGN KEY ([TeamId]) REFERENCES [dbo].[Team] ([TeamId]),
+    UNIQUE NONCLUSTERED ([Email] ASC)
 );
+
+
 
 
 

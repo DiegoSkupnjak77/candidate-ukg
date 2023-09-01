@@ -31,19 +31,14 @@ namespace TraineeProgram.Persistence.Repositories
 
         public async Task<Candidate> GetByIdAsync(int id)
         {
-            var candidate = await _context.Candidates.Include(i => i.CandidateLinks).FirstOrDefaultAsync(c => c.Id == id);
+            var candidate = await _context.Candidates.Include(i => i.CandidateLinks).FirstOrDefaultAsync(c => c.CandidateId == id);
             return _mapper.Map<Candidate>(candidate);
         }
         public async Task<IEnumerable<Interview>> GetInterviewByCandidateId(int id)
         {
             List<Interview> interviews = new List<Interview>();
 
-            var interviewsFromDB = await _context.Interviews.Where(c => c.IdCandidate == id)
-                .Include(i => i.Hr)
-                .Include(i => i.Cultural)
-                .Include(i => i.Technical)
-                .Include(i => i.Manager)
-                .Include(i => i.Vp)
+            var interviewsFromDB = await _context.Interviews
                 .ToListAsync();
 
             foreach (var i in interviewsFromDB)
@@ -64,7 +59,7 @@ namespace TraineeProgram.Persistence.Repositories
                 var candidateToInsert = await _context.Candidates.AddAsync(_mapper.Map<DBCandidate>(newCandidate));
                 await _context.SaveChangesAsync();
                 var candidateSaved = await _context.Candidates.Include(i => i.CandidateLinks).
-                    FirstOrDefaultAsync(c => c.Id == candidateToInsert.Entity.Id);
+                    FirstOrDefaultAsync(c => c.CandidateId == candidateToInsert.Entity.CandidateId);
                 return _mapper.Map<Candidate>(candidateSaved);
             }
             catch (Exception ex)
@@ -78,7 +73,7 @@ namespace TraineeProgram.Persistence.Repositories
         public async Task<bool> DeleteAsync(int id)
         {
             bool ok = false;
-            var candidateLogicRemov = await _context.Candidates.FirstOrDefaultAsync(c => c.Id == id);
+            var candidateLogicRemov = await _context.Candidates.FirstOrDefaultAsync(c => c.CandidateId == id);
             if (candidateLogicRemov!=null)
             {
                 candidateLogicRemov.IsActive=false;
@@ -94,14 +89,13 @@ namespace TraineeProgram.Persistence.Repositories
             var candidateUpdated = _context.Candidates.Update(_mapper.Map<DBCandidate>(candidate));
 
             var rowsAfected = await _context.SaveChangesAsync();
-            var can = await _context.Candidates.FirstOrDefaultAsync(c => c.Id == candidateUpdated.Entity.Id);
+            var can = await _context.Candidates.FirstOrDefaultAsync(c => c.CandidateId == candidateUpdated.Entity.CandidateId);
             return rowsAfected >0 ? _mapper.Map<Candidate>(can) : null;
         }
         public async Task<IEnumerable<Candidate>> ListOfCandidates()
         {
-            var candidates = await _context.Candidates.Where(c => c.IsActive == true && c.IdJobOpening>0 && c.Interviews.Count()>0)
-             .Include(c => c.IdJobOpenings)
-             .Include(c => c.Interviews).ToListAsync();
+            var candidates = await _context.Candidates.Where(c => c.IsActive == true && c.CandidateJobOpenings.Count>0 && c.Processes.Count()>0)
+                .ToListAsync();
             return _mapper.Map<IEnumerable<Candidate>>(candidates);
         }
     }

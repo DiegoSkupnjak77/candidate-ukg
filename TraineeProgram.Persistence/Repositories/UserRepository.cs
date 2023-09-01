@@ -33,7 +33,7 @@ namespace TraineeProgram.Persistence.Repositories
                 newUser.Password = password;
                 var userToInsert = await _context.UserRs.AddAsync(_mapper.Map<DBUserR>(newUser));
                 await _context.SaveChangesAsync();
-                var UserSaved = await _context.UserRs.FirstOrDefaultAsync(u => u.Id == userToInsert.Entity.Id);
+                var UserSaved = await _context.UserRs.FirstOrDefaultAsync(u => u.UserId == userToInsert.Entity.UserId);
                 return _mapper.Map<User>(UserSaved);
             }
             catch (Exception ex)
@@ -46,7 +46,7 @@ namespace TraineeProgram.Persistence.Repositories
 
         public async Task<User> GetByIdAsync(int id)
         {
-            var user = await _context.UserRs.FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.UserRs.FirstOrDefaultAsync(u => u.UserId == id);
             return _mapper.Map<User>(user);
         }
     }
