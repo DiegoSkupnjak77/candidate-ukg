@@ -1,0 +1,91 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "TraineeProgramDBContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "DBEntities",
+   "ProjectRootNamespace": "TraineeProgram.Persistence",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Candidate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Candidate_JobOpening]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Candidate_Links]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Cultural]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[HR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[interview]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InterviewType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[JobOpening]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Manager]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[OfferLetter]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Technical]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserR_InterviewType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[VP]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "servertraineeprogram2.TraineeProgramDB",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}
